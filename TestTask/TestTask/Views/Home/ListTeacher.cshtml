@@ -1,0 +1,28 @@
+﻿@model List<TestTask.Models.ListTeacherModel>
+@{
+    ViewBag.Title = "ListTeacher";
+}
+<h2>ListTeacher</h2>
+
+@using (Html.BeginForm("ListTeacher", "Home"))
+{
+    <select name="filtering">
+        <option value="standart">Стандарт</option>
+        <option value="Name">По имени</option>
+        <option value="Up">По возрастанию</option>
+        <option value="Down">По убыванию</option>
+    </select>
+    <input type="submit" value="Выбрать" />
+}
+
+<table class="table">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@(user.Name + " " + user.Surname)</td>
+            <td>@user.Subject</td>
+            <td>@user.CountStudent</td>
+            <td><a href="~/Home/EditTeacher/@user.UserId">edit  </a></td>
+        </tr>
+    }
+</table>
